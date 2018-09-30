@@ -34,7 +34,7 @@ downloadsArray.each do |node|
   currentImg = currentPage.css(second_page_css_selector).attr('src')
   currentTitle = currentPage.css('#title').text.gsub(/\s+/, '_')
   prog.title = "Downloading #{currentTitle}.jpg"
-  open("#{destination}/#{currentTitle}.jpg", 'wb') do |file|
+  open(File.expand_path("#{destination}/#{currentTitle}.jpg"), 'wb') do |file|
     file << open(currentImg).read
     prog.increment
   end
